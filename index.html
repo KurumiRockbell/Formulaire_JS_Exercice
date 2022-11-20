@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="date.updated" content="2022-04-21">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style type="text/css">
+        /* CSS Document */
+        /*######################################################"*/
+        /* GÉNÉRALITÉ TOUTES PAGES */
+        #avertnojs {
+            font-size: 1.2em;
+            color: hsl(0, 100%, 47%);
+            text-align: center;
+        }
+
+        body {
+            position: relative;
+            right: 0;
+            width: 700px;
+            /* Largeur de la page hors marges et bordures */
+            margin: 0 auto;
+            padding: 0 20px;
+            /* Marges intérieures latérales */
+            border-left: 8px solid #AAA;
+            border-right: 8px solid #AAA;
+            background-color: #FFF;
+            /* COULEUR DE FOND DE LA PAGE */
+            font-size: 0.85em;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: justify;
+        }
+
+        h1 {
+            font-family: Arial, Verdana, Geneva, sans-serif;
+            color: #444;
+            text-align: center;
+        }
+
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: Arial, Verdana, Geneva, sans-serif;
+            color: #444;
+            text-align: left;
+        }
+
+        html {
+            font-size: 100%;
+        }
+
+        p {
+            text-align: justify;
+            font-size: 1.2em;
+        }
+
+        hr {
+            height: 2px;
+            background-color: gray;
+        }
+
+        #copyright {
+            font-size: 0.8em;
+            text-align: right;
+        }
+
+        #avertissement {
+            font-size: 1em;
+        }
+    </style>
+    <title>Formulaire HTML / JS</title>
+</head>
+
+<body>
+    <h1>Formulaire traité avec Javascript</h1>
+    <p id="avertissement">
+        Chaque formulaire ci-dessous demande la saisie ou la sélection d'une
+        valeur. Un click sur le bouton "Calcul" affecte cette valeur à une variable
+        et l'affiche dans le champ "Résultat". La variable pourra être fournie à un algorithme en vue d'un traitement
+        ultérieur, un calcul par exemple.
+    </p>
+    <h3>Texte monoligne : input</h3>
+    <!-- CHAMP INPUT ################################################# -->
+    <form action="">
+        <fieldset>
+            <legend>Récupérer une ligne de texte, l'affecter à une variable et l'afficher</legend>
+            <!-- CHAMPS LABEL ET INPUT -->
+            <label for="name11">Nom : </label>
+            <input type="text" id="name1" size="10" placeholder="Nom" /><br />
+            <!-- BOUTON DE CALCUL -->
+            <button type="button" id="btn1">
+                Calcul
+            </button>
+
+            <!-- BOUTON RESET -->
+            <button type="reset">Effacer</button>
+            <br /><br />
+            <label>Afficher le nom : </label>
+            <input type="text" id="resultName1" size="10" placeholder="Résultat" />
+        </fieldset>
+    </form>
+    <!-- DÉBUT DU SCRIPT -->
+    <script type="text/javascript">
+        "use strict";
+        function getName1() {
+            // Sélectionner l'élément input et retourner sa valeur
+            return document.getElementById("name1").value;
+        }
+        function displayName1(nom) {
+            document.getElementById("resultName1").value = nom;
+        }
+        function calcul1() {
+            var nom = getName1(); 
+            displayName1(nom);
+        }
+        // Événement
+        var boutonUn = document.getElementById("btn1");
+        // autre méthode :
+        // var boutonUn=document.querySelector("#btn1");
+        boutonUn.addEventListener("click", calcul1, false);
+    </script>
+    <!-- ZONE DE TEXTE ############################################### -->
+    <h3>Texte multiligne : textarea</h3>
+    <form action="">
+        <fieldset>
+            <legend>Récupérer du texte,
+                l'affecter à une variable et l'afficher</legend>
+            <!-- CHAMP INPUT TEXTE -->
+            <label for="zonedetexte2">Saisissez plusieurs lignes de texte avec ou sans retour à la ligne :
+            </label><br />
+            <textarea id="zonedetexte2" row="6" cols="75" placeholder="Zone de texte" wrap="soft"></textarea><br />
+            <!-- BOUTON DE CALCUL -->
+            <button type="button" id="btn2">
+                Calcul
+            </button>
+
+            <!-- BOUTON RESET -->
+            <button type="reset">Effacer</button>
+            <br /><br />
+            <label>Afficher le texte : </label><br />
+            <textarea id="resultZonedetexte2" row="6" cols="75" maxlength="300" wrap="soft"
+                placeholder="Résultat"></textarea><br />
+        </fieldset>
+    </form>
+    <!-- DÉBUT DU SCRIPT -->
+    <script type="text/javascript">
+        "use strict";
+        function getText1() {
+            return document.getElementById("zonedetexte2").value;
+        }
+        function displayText1(text) {
+            document.getElementById("resultZonedetexte2").value = text;
+        }
+        function calcul1() {
+            var text = getText1();
+            displayText1(text);
+        }
+
+        var boutonDeux = document.getElementById("btn2");
+        boutonDeux.addEventListener("click", calcul1, false);
+    </script>
+
+
+    <!-- LISTE DÉROULANTE ########################################### -->
+    <h3>Liste déroulante : select</h3>
+    <form action="">
+        <fieldset>
+            <legend>Récupérer un élément de la liste, l'affecter à une variable et l'afficher</legend>
+            <label for="listePlanet3">Choisissez une planète : </label>
+            <select id="listePlanet3">
+                <option value="" selected>Choisissez une planète</option>
+                <option value="Mercure">Mercure</option>
+                <option value="Vénus">Vénus</option>
+                <option value="Terre">Terre</option>
+                <option value="Mars">Mars</option>
+                <option value="Jupiter">Jupiter</option>
+                <option value="Saturne">Saturne</option>
+                <option value="Uranus">Uranus</option>
+                <option value="Neptune">Neptune</option>
+            </select><br />
+            <!-- BOUTON DE CALCUL -->
+            <button type="button" id="btn3">
+                Calcul
+            </button>
+
+            <!-- BOUTON RESET -->
+            <button type="reset">Effacer</button>
+            <br /><br />
+            <label>Résultat planète : </label>
+            <input type="text" id="resultPlanet3" size="10" placeholder="Résultat"><br />
+        </fieldset>
+    </form>
+    <!-- DÉBUT DU SCRIPT -->
+    <script type="text/javascript">
+        "use strict";
+        function getPlanete() {
+            return document.getElementById("listePlanet3").value;
+        }
+        function displayPlanete(planete3) {
+            document.getElementById("resultPlanet3").value = planete3;
+        }
+        function calcul1() {
+            var planete3 = getPlanete();
+            displayPlanete(planete3);
+        }
+        var boutonTrois = document.getElementById("btn3");
+        boutonTrois.addEventListener("click", calcul1, false);
+    </script>
+
+
+    <!-- BOUTONS RADIO ############################################# -->
+    <h3>Boutons radio</h3>
+    <form action="">
+        <fieldset>
+            <legend>Récupérer un élément de la liste,
+                l'affecter à une variable et l'afficher</legend>
+            <label for="direction4">Choisissez une option : </label>
+            <input type="radio" name="direction4" value="Nord" checked>Nord
+
+            <input type="radio" name="direction4" value="Est">Est
+
+            <input type="radio" name="direction4" value="Sud">Sud
+
+            <input type="radio" name="direction4" value="Ouest">Ouest<br />
+            <!-- BOUTON DE CALCUL -->
+            <button type="button" id="btn4">
+                Calcul
+            </button>
+
+            <!-- BOUTON RESET -->
+            <button type="reset">Effacer</button>
+            <br /><br />
+            <label>Résultat direction : </label>
+            <input type="text" id="resultDirection4" size="10" placeholder="Résultat"><br />
+        </fieldset>
+    </form>
+
+    <!-- DÉBUT DU SCRIPT -->
+
+    <script type="text/javascript">
+        "use strict";
+        function getDirection() {
+            var valeur = document.querySelector('input[name=direction4]:checked').value;
+            return valeur;
+        }
+        function displayDirection(direction) {
+            document.getElementById("resultDirection4").value = direction;
+        }
+        function calcul1() {
+            var direction = getDirection();
+            displayDirection(direction);
+        }
+        var boutonQuatre = document.getElementById("btn4");
+        boutonQuatre.addEventListener("click", calcul1, false);
+    </script>
+
+
+
+    <!-- CHECKBOX ###################################################### -->
+    <h3>Liste à choix multiple : checkbox</h3>
+    <form>
+        <fieldset>
+            <legend>Récupérer le tableau des éléments cochés,
+                l'affecter à une variable et l'afficher</legend>
+            Lundi : <input type="checkbox" name="jour5" value="Lundi">
+
+            Mardi : <input type="checkbox" name="jour5" value="Mardi">
+
+            Mercredi : <input type="checkbox" name="jour5" value="Mercredi">
+
+            Jeudi : <input type="checkbox" name="jour5" value="Jeudi">
+
+            Vendredi : <input type="checkbox" name="jour5" value="Vendredi">
+
+            Samedi : <input type="checkbox" name="jour5" value="Samedi">
+
+            Dimanche : <input type="checkbox" name="jour5" value="Dimanche"><br />
+            <!-- BOUTON DE CALCUL -->
+            <button type="button" id="btn5">
+                Calcul
+            </button>
+
+            <!-- BOUTON RESET -->
+            <button type="reset">Effacer</button>
+            <br /><br />
+            <label>Résultat checkbox : </label>
+            <input type="text" id="resultJour5" size="50" placeholder="Résultat">
+        </fieldset>
+    </form>
+    <!-- DÉBUT DU SCRIPT -->
+
+    <script type="text/javascript">
+        "use strict";
+        function getWeekDay() {
+            var valeur2 = [];
+            // valeur2 = document.querySelector('input[name=jour5]:checked').value;
+            var valeurtab = document.getElementsByTagName("input");
+            // return valeur2;
+            for (var i = 0; i < valeurtab.length; i++) {
+                if (valeurtab[i].type == 'checkbox' && valeurtab[i].checked == true) valeur2.push(valeurtab[i].value);
+            }
+            return valeur2;
+        }
+
+        function displayWeekDay(weekday) {
+            document.getElementById("resultJour5").value = weekday;
+        }
+        function calcul5() {
+            var weekday = getWeekDay();
+            displayWeekDay(weekday);
+        }
+        var boutonCinq = document.getElementById("btn5");
+
+        boutonCinq.addEventListener("click", calcul5, false);
+    </script>
+
+
+    <!-- FORMAT NUMÉRIQUE ############################################## -->
+    <h3>Format numérique</h3>
+    <form>
+        <fieldset>
+            <legend>Récupérer un nombre au format numérique,
+                l'affecter à une variable et l'afficher</legend>
+            <input type="number" id="formatNumerique6" min="100" max="200" step="5" value="100" />
+            <br />
+            <!-- BOUTON DE CALCUL -->
+            <button type="button" id="btn6">
+                Calcul
+            </button>
+
+            <!-- BOUTON RESET -->
+            <button type="reset">Effacer</button>
+            <br /><br />
+            <label>Résultat : </label>
+            <input type="text" id="resultFormatNumerique6" size="10" placeholder="Résultat">
+        </fieldset>
+    </form>
+    <!-- DÉBUT DU SCRIPT -->
+
+    <script type="text/javascript">
+        "use strict";
+        function getNumb() {
+            // var valeur = document.querySelector('input[name=direction4]:checked').value;
+            // return valeur;
+            return document.getElementById("formatNumerique6").value;
+        }
+        function displayNumber(numb) {
+            document.getElementById("resultFormatNumerique6").value = numb;
+        }
+        function calcul2() {
+            var numb = getNumb();
+            displayNumber(numb);
+        }
+        var boutonSix = document.getElementById("btn6");
+        boutonSix.addEventListener("click", calcul2, false);
+    </script>
+
+    <!-- FORMAT CURSEUR ############################################ -->
+    <h3>Choisir un nombre à l'aide d'un curseur</h3>
+    <form>
+        <fieldset>
+            <legend>Choisir un nombre avec un curseur,
+                l'affecter à une variable et l'afficher</legend>
+            <input type="range" id="formatCurseur7" min="10" max="50" step="2" value="10" oninput="this.nextElementSibling.value = this.value"/>
+            <input type="text" id="suiviCurseur7" size="10" />
+            <br /><br />
+            <!-- BOUTON DE CALCUL -->
+            <button type="button" id="btn7">
+                Calcul
+            </button>
+
+            <!-- BOUTON RESET -->
+            <button type="button" id="reset7">Effacer</button>
+            <br /><br />
+            <label>Résultat curseur : </label>
+            <input type="text" id="resultFormatCurseur7" size="10" placeholder="Résultat">
+        </fieldset>
+    </form>
+    <!-- DÉBUT DU SCRIPT -->
+
+    <script type="text/javascript">
+        "use strict";
+        function getNumbe() {
+            return document.getElementById("formatCurseur7").value;
+        }
+        function displayNumbe(numbe) {
+            document.getElementById("resultFormatCurseur7").value=numbe;
+        }
+        function calcul6() {
+            var numbe=getNumbe();
+            displayNumbe(numbe);
+        }
+        var boutonSeven=document.getElementById("btn7");
+        boutonSeven.addEventListener("click", calcul6, false);
+    </script> 
+
+
+    <h3>Date</h3>
+    <!-- CHAMP DATE################################################# -->
+    <form action="">
+        <fieldset>
+            <legend>Récupérer une date, l'affecter à une variable et l'afficher</legend>
+            <!-- CHAMPS LABEL ET INPUT -->
+            <label for="date">Date : </label>
+            <input type="date" id="date" size="10" placeholder="Date" /><br />
+            <!-- BOUTON DE CALCUL -->
+            <button type="button" id="btnDate">
+                Calcul
+            </button>
+
+            <!-- BOUTON RESET -->
+            <button type="reset">Effacer</button>
+            <br /><br />
+            <label>Afficher la date : </label>
+            <input type="text" id="resultDate" size="10" placeholder="Résultat" />
+        </fieldset>
+    </form>
+    <!-- DÉBUT DU SCRIPT -->
+
+    <script type="text/javascript">
+        "use strict";
+        function getDate() {
+            return document.getElementById("date").value;
+        }
+        function displayDate(date) {
+            document.getElementById("resultDate").value = date;
+        }
+        function calcul7() {
+            var date = getDate();
+            displayDate(date);
+        }
+        var boutonSix = document.getElementById("btnDate");
+
+        boutonSix.addEventListener("click", calcul7, false);
+    </script>
+
+    <h3>Couleur</h3>
+    <!-- CHAMP COULEUR ################################################# -->
+    <form action="">
+        <fieldset>
+            <legend>Récupérer une couleur, l'affecter à une variable et l'afficher</legend>
+            <!-- CHAMPS LABEL ET INPUT -->
+            <label for="couleur">Nom : </label>
+            <input type="color" id="couleur" size="10" placeholder="Couleur" /><br />
+            <!-- BOUTON DE CALCUL -->
+            <button type="button" id="btnCouleur">
+                Calcul
+            </button>
+
+            <!-- BOUTON RESET -->
+            <button type="reset">Effacer</button>
+            <br /><br />
+            <label>Afficher la couleur : </label>
+            <input type="text" id="resultCouleur" size="10" placeholder="Résultat" />
+        </fieldset>
+    </form>
+    <!-- DÉBUT DU SCRIPT -->
+
+    <script type="text/javascript">
+        "use strict";
+        function getCouleur() {
+            return document.getElementById("couleur").value;
+        }
+        function displayCouleur(color) {
+            document.getElementById("resultCouleur").value = color;
+        }
+        function calcul8() {
+            var color = getCouleur();
+            displayCouleur(color);
+            console.log(color);
+        }
+        var boutonSept = document.getElementById("btnCouleur");
+        boutonSept.addEventListener("click", calcul8, false);
+    </script>
+
+    <p id="copyright">© Gerard Tourres</p>
+</body>
+
+</html>
