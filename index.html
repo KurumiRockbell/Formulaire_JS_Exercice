@@ -89,7 +89,7 @@
             <legend>Récupérer une ligne de texte, l'affecter à une variable et l'afficher</legend>
             <!-- CHAMPS LABEL ET INPUT -->
             <label for="name11">Nom : </label>
-            <input type="text" id="name1" size="10" placeholder="Nom" /><br />
+            <input type="text" id="name1" size=12" placeholder="Nom" maxlength="15" /><br />
             <!-- BOUTON DE CALCUL -->
             <button type="button" id="btn1">
                 Calcul
@@ -99,7 +99,7 @@
             <button type="reset">Effacer</button>
             <br /><br />
             <label>Afficher le nom : </label>
-            <input type="text" id="resultName1" size="10" placeholder="Résultat" />
+            <input type="text" id="resultName1" size="10" maxlength="10" placeholder="Résultat" />
         </fieldset>
     </form>
     <!-- DÉBUT DU SCRIPT -->
@@ -131,7 +131,7 @@
             <!-- CHAMP INPUT TEXTE -->
             <label for="zonedetexte2">Saisissez plusieurs lignes de texte avec ou sans retour à la ligne :
             </label><br />
-            <textarea id="zonedetexte2" row="6" cols="75" placeholder="Zone de texte" wrap="soft"></textarea><br />
+            <textarea id="zonedetexte2" row="6" cols="40" placeholder="Zone de texte" wrap="soft"></textarea><br />
             <!-- BOUTON DE CALCUL -->
             <button type="button" id="btn2">
                 Calcul
@@ -364,7 +364,7 @@
         <fieldset>
             <legend>Choisir un nombre avec un curseur,
                 l'affecter à une variable et l'afficher</legend>
-            <input type="range" id="formatCurseur7" min="10" max="50" step="2" value="10" oninput="this.nextElementSibling.value = this.value"/>
+            <input type="range" id="formatCurseur7" min="10" max="50" step="1" value="10" oninput="this.nextElementSibling.value = this.value"/>
             <input type="text" id="suiviCurseur7" size="10" />
             <br /><br />
             <!-- BOUTON DE CALCUL -->
