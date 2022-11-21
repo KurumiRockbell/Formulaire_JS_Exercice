@@ -180,6 +180,9 @@
                 <option value="Saturne">Saturne</option>
                 <option value="Uranus">Uranus</option>
                 <option value="Neptune">Neptune</option>
+                <option value="Aldébaran">Aldébaran</option>
+                <option value="Hadar">Hadar</option>
+                
             </select><br />
             <!-- BOUTON DE CALCUL -->
             <button type="button" id="btn3">
@@ -223,6 +226,8 @@
             <input type="radio" name="direction4" value="Est">Est
 
             <input type="radio" name="direction4" value="Sud">Sud
+
+            <input type="radio" name="direction4" value="Sud-Est">Sud-Est
 
             <input type="radio" name="direction4" value="Ouest">Ouest<br />
             <!-- BOUTON DE CALCUL -->
@@ -297,10 +302,10 @@
         function getWeekDay() {
             var valeur2 = [];
             // valeur2 = document.querySelector('input[name=jour5]:checked').value;
-            var valeurtab = document.getElementsByTagName("input");
+            var valeurtab = document.getElementsByName("jour5");
             // return valeur2;
             for (var i = 0; i < valeurtab.length; i++) {
-                if (valeurtab[i].type == 'checkbox' && valeurtab[i].checked == true) valeur2.push(valeurtab[i].value);
+                if (valeurtab[i].checked == true) valeur2.push(valeurtab[i].value);
             }
             return valeur2;
         }
@@ -364,7 +369,7 @@
         <fieldset>
             <legend>Choisir un nombre avec un curseur,
                 l'affecter à une variable et l'afficher</legend>
-            <input type="range" id="formatCurseur7" min="10" max="50" step="1" value="10" oninput="this.nextElementSibling.value = this.value"/>
+            <input type="range" id="formatCurseur7" min="1" max="100" step="1" value="10" oninput="this.nextElementSibling.value = this.value"/>
             <input type="text" id="suiviCurseur7" size="10" />
             <br /><br />
             <!-- BOUTON DE CALCUL -->
